@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="home">
+<head>
+	<title>Create conference chat room!</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/join-conference.css" />
+	<script src="../js/moment.min.js"></script>
+	<script src="../js/angular.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/angular-socket.js"></script>
+	<script src="../js/controllers/home.js"></script>
+</head>
+<body>
+	<form id='joinRoom' action='/authenticate' method='POST'>
+		<input type='text' id='nick_name' name='nick_name' ng-model='data.nick_name' placeholder='Type your name here' class='form-control' />
+		<input type='text' id='room_name' name='room_name' ng-model='data.room_name' placeholder='Type room name here' class='form-control' />
+		<input type='hidden' name='socket_id' />
+		<button class='btn btn-primary form-control'  type="submit" ng-disabled="joinRoom.$invalid" > Submit</button>
+	</form>
+	<div class='roomsAvailable'>
+		<h3>Rooms Available</h3>
+		<table ng-controller='RoomList' class='table table-bordered'>
+			<thead>
+				<tr>
+					<th>Room Number</th>
+					<th>Number of Users</th>
+				</tr>
+			</thead>
+			<tbody id='rooms_available_body'>
+				<tr ng-repeat='(id, room) in rooms' id="{{id}}" >
+					<td>{{room.name}}</td>
+					<td>{{room.people.length}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<h3><%= error_message %></h3>
+</body>
+</html>

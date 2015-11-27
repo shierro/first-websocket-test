@@ -1,0 +1,33 @@
+{
+  "name": "nodechatsystem",
+  "version": "0.0.1",
+  "description": "Conference Room",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "chat",
+    "system"
+  ],
+  "author": "Theo",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "client-sessions": "^0.7.0",
+    "cookie-parser": "^1.4.0",
+    "ejs": "^2.3.4",
+    "express": "^4.8.2",
+    "express-session": "^1.12.1",
+    "gravatar": "~1.4.0",
+    "jsonwebtoken": "^5.4.1",
+    "moment": "^2.10.6",
+    "mongoose": "^4.2.5",
+    "node-uuid": "^1.4.4",
+    "nodemon": "^1.8.1",
+    "passwordless": "^1.1.0",
+    "socket.io": "^1.0.6"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,40 @@
+<html ng-app='conference'>
+	<head>
+		<title>Private Conference Room</title>
+		<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="/css/conference.css" />
+	</head>
+	<body>
+		<input type="hidden" id="room_name" value=<%=room_name %> />
+		<input type="hidden" id="nick_name" value=<%=nick_name %> />
+		<input type="hidden" id="room_id" value=<%=room_id %> />
+		<div class='form-div'>
+			<div id='conference_body' ng-controller='MessagesBody'>
+				<div ng-repeat='message in messages' class='message'>
+					<span class="nickname">{{ message.nickname == nick_name ? 'me' : message.nickname }}: </span>
+					<span class='content'>{{ message.content }}</span>
+					<span class='date pull-right' data="{{message.date}}">{{message.date}}</span>
+				</div>
+			</div>
+			<form id='send_message_form'>
+					<input type='text' class='form-control input-lg' placeholder='type your message here' id='message' autofocus autocomplete='off'></input>
+					<button class='form-control btn btn-primary input-lg' id='submit'> Submit</button>
+			</form>
+			<div id='users_typing' class='col-sm-8' ng-controller='ConferenceTyping'>
+				<span ng-repeat='(id,user) in typing' id="{{id}}"> {{user.nick_name}} is typing.. </span>
+			</div>
+		</div>
+		<div id='user_list' ng-controller='ConferenceUsers'>
+			<h4  class='table-bordered'>Users Online <button class='btn btn-danger' ng-click ="logout()">Leave</button></h4>
+			<div ng-repeat='(id,user) in users' class='table-bordered'>
+<!-- 				<p id="{{id}}">{{user}} {{user == nick_name ? <button><i class="glyphicon glyphicon-arrow-left"></i></button> : '' }}</p> -->
+				<p id="{{id}}">{{user}}</p>
+			</div>
+		</div>
+	</body>
+	<script src="/js/moment.min.js"></script>
+	<script src="/js/angular.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/angular-socket.js"></script>
+	<script src="/js/controllers/conference.js"></script>
+</html>

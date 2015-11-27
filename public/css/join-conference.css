@@ -1,0 +1,19 @@
+form{
+	width:50% !important;
+	float:left;
+	padding-left:5%;
+	padding-right:5%;
+	margin-right:0px;
+}
+.roomsAvailable{
+	width: 50% !important;
+	float:left;
+	padding-left:5%;
+	padding-right:5%;
+	text-align: center;
+}
+.roomsAvailable h3{
+	border: 2px lightgray solid;
+	border-radius: 5px;
+	margin-top:0px;
+}
